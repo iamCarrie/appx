@@ -2,11 +2,11 @@
 </script>
 
 <template>
-  <form class="bg-[#fff] w-full p:flex p:items-end p:px-[22px] p:py-[25px] p:space-x-[15px] tm:px-[17px] tm:py-[24px]">
+  <form class="bg-[#fff] w-full p:flex p:items-end p:px-[22px] p:py-[25px] p:space-x-[15px] tm:px-[17px] tm:py-[24px] tm:space-y-[20px]">
   <div>
-    <p class="text-[#737791] text-[14px] leading-[21px] mb-[5px]">Category</p>
-    <div class="relative h-[48px] w-[222px]">
-      <select name="Announcement" class="block w-full h-full overflow-hidden border-solid border-[1px] border-[#F2F2F7] rounded-[8px]  appearance-none text-[#737791] py-[2px] px-[16px] text-[18px]">
+    <p class="text-[#737791] text-[14px] leading-[21px] mb-[8px]">Category</p>
+    <div class="relative p:h-[48px] p:w-[222px] tm:w-full tm:h-[38px]">
+      <select name="Announcement" class="block w-full h-full overflow-hidden border-solid border-[1px] border-[#F2F2F7] rounded-[8px] appearance-none text-[#151D48] py-[2px] px-[16px] text-[14px]">
         <option value="HR Announcemen">HR Announcement</option> 
         <option value="News">News</option> 
         <option value="HR Announcemen">All</option> 
@@ -18,7 +18,7 @@
   </div>
   <div>
     <p class="text-[#737791] font-poppins text-[14px] font-[400] leading-[21px] mb-[5px]">Subtitle</p>
-    <input type="text" class="block overflow-hidden border-solid border-[1px] border-[#F2F2F7] rounded-[8px] px-[15px] h-[48px] w-[218px]">
+    <input type="text" class="block overflow-hidden border-solid border-[1px] border-[#F2F2F7] rounded-[8px] px-[15px] p:h-[48px] p:w-[218px] tm:w-full tm:h-[38px]">
   </div>
   <button type="submit" class="flex items-center justify-center bg-[#F2F2F7] rounded-[8px] px-[15px] h-[48px] tm:w-full">
     <p>Search</p>
