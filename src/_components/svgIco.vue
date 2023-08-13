@@ -3,17 +3,12 @@ const props = defineProps({
   name: {
     type: String,
     require: true,
-  },
-  style: {
-    type: String,
-    default: "",
   }
 });
 </script>
 <template>
   <svg
-    class="h-full w-full fill-current align-middle"
-    :class="props.style"
+    class="fill-current align-middle"
   >
     <use :xlink:href="`#${props.name}`" />
   </svg>
