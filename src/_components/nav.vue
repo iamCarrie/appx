@@ -27,7 +27,7 @@ watchEffect(() => {
 </script>
 
 <template>
- <nav class="overflow-hidden flex-shrink-0 transition-all" :class="{ '!w-[260px]' : props.isNavActive , 'w-[80px]' : !props.isNavActive}">
+ <nav class="overflow-hidden flex-shrink-0 transition-all" :class="{ 'p:w-[295px] tm:w-full' : props.isNavActive , 'p:w-[80px] tm:w-[0]' : !props.isNavActive}">
     <ul>
       <li class="group/nav" v-for="item in props.data" :key="item.key">
         <!-- {{ item }} -->
@@ -52,7 +52,7 @@ watchEffect(() => {
             class="flex-shrink-0 ml-[10px] text-[16px] font-[600] flex-grow"
             :class="{'opacity-0 pointer-events-none':!props.isNavActive}"
           >{{ item.text }}</p>
-          <i class="flex-shrink-0 ml-[5px]">
+          <i class="flex-shrink-0 ml-[5px]" :class="{'opacity-0 pointer-events-none':!props.isNavActive}">
             <svgIco name="arrow" class="w-[10px] h-[5px]"/>
           </i>
         </a>
