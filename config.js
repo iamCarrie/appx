@@ -2,14 +2,14 @@ module.exports = {
   ieVersion: false, // true 或 false
   https: true,
   port: 20222,
-  proxy: {
-    "/api": {
-      target: "https://esg-api-qa.gomore.club/api/dashboard/v1/",
-      secure: false,
-      changeOrigin: true,
-      rewrite: (path) => path.replace(/^\/api/, ""),
-    },
-  },
+  // proxy: {
+  //   "/api": {
+  //     target: "",
+  //     secure: false,
+  //     changeOrigin: true,
+  //     rewrite: (path) => path.replace(/^\/api/, ""),
+  //   },
+  // },
   desktopMinWidth: 1366,
   mobileMaxWidth: 768,
   basicMobileWidth: 320,
