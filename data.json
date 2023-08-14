@@ -1,6 +1,6 @@
 [
   {
-    "ico":"home",
+    "ico": "home",
     "key": "01",
     "text": "Home General",
     "children": [
@@ -57,7 +57,7 @@
     ]
   },
   {
-    "ico":"shop",
+    "ico": "shop",
     "key": "6c3",
     "text": "Marketing &  Sales",
     "children": [
@@ -81,7 +81,7 @@
       },
       {
         "key": "29e",
-        "text": "General2",
+        "text": "General5555555552",
         "children": [
           {
             "key": "ac3",
@@ -114,22 +114,22 @@
     ]
   },
   {
-    "ico":"earth",
+    "ico": "earth",
     "key": "c81",
     "text": "Customer Service & Operation"
   },
   {
-    "ico":"car",
+    "ico": "car",
     "key": "c82",
     "text": "Carrier Management"
   },
   {
-    "ico":"calculator",
+    "ico": "calculator",
     "key": "c83",
     "text": "Finance & Accounting"
   },
   {
-    "ico":"user",
+    "ico": "user",
     "key": "c84",
     "text": "HR Development & Organization Setup",
     "children": [
