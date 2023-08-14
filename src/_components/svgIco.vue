@@ -3,13 +3,11 @@ const props = defineProps({
   name: {
     type: String,
     require: true,
-  }
+  },
 });
 </script>
 <template>
-  <svg
-    class="fill-current align-middle"
-  >
+  <svg class="fill-current align-middle">
     <use :xlink:href="`#${props.name}`" />
   </svg>
 </template>

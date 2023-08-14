@@ -27,7 +27,7 @@ const props = defineProps({
 // );
 
 function getImageUrl(img) {
-  return new URL(`/src/assets/imgs/${img}`, import.meta.url).href
+  return new URL(`/src/assets/imgs/${img}`, import.meta.url).href;
 }
 
 // const cssStyle = computed(() => {
@@ -42,7 +42,11 @@ function getImageUrl(img) {
 </script>
 <template>
   <figure :class="addCss.figure">
-    <img :src="getImageUrl(props.src)" :alt="alt" :class="`h-full w-full ${addCss.img}`" />
+    <img
+      :src="getImageUrl(props.src)"
+      :alt="alt"
+      :class="`h-full w-full ${addCss.img}`"
+    />
   </figure>
 </template>
 
