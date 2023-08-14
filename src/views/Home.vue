@@ -1,4 +1,42 @@
 <script setup>
+
+import { getList } from "@js/_axios";
+import { ref, reactive, onMounted, provide, computed } from "vue";
+
+
+
+const list = reactive({
+  data:''
+})
+const pageNum = ref(1)
+const limit = ref(10)
+const pages = computed(()=> { return Math.ceil(list.data.length / limit.value)})
+
+onMounted(() => {
+  getApi();
+});
+
+async function getApi(){
+  const getNavList = await getList()
+  if(getNavList.status === 200){
+    list.data = getNavList.data
+  }
+}
+
+function changePage(pageNum , data){
+  const firstList = limit.value * (pageNum-1)
+  const lastList = firstList+limit.value
+  const pageList =[]
+
+  for (let i = firstList; i < lastList; i++) {
+    const obj = data[i];
+    if(obj){
+      obj.number = i
+      pageList.push(obj)
+    }
+  }
+  return pageList
+}
 </script>
 
 <template>
@@ -24,28 +62,31 @@
     <p>Search</p>
   </button>
 </form>
-<section class="mt-[30px] p:space-y-[15px] tm:bg-[#fff] tm:px-[10px] tm:py-[15px]">
+<section v-if="list.data" class="mt-[30px] p:space-y-[15px] tm:bg-[#fff] tm:px-[10px] tm:py-[15px]">
   <header class="flex items-center">
     <p class="flex-grow text-[#11263C] font-[600] text-[16px]">My Collection</p>
     <div class="flex items-center tm:hidden">
-      <p class="text-[#737791] font-[600] text-[16px]">Total 480 |</p>
+      <p class="text-[#737791] font-[600] text-[16px]">Total {{ list.data.length }} |</p>
       <div class="flex items-center space-x-[20px] ml-[26px]">
-        <button type="button" class="rotate-90">
+        <button type="button" class="rotate-90 disabled:opacity-20" @click="changePage(pageNum--, list.data)" :disabled="pageNum === 1">
           <i class="block">
             <svgIco name="arrow" class="w-[10px] h-[5px]"/>
           </i>
         </button>
         <div class="relative h-[32px] w-[40px]">
-          <select name="Announcement" class="block w-full h-full overflow-hidden rounded-[5px] appearance-none text-[#737791] px-[10px] text-[14px]">
-            <option value="1">1</option> 
-            <option value="10">10</option> 
-            <option value="15">15</option> 
+          <select 
+          v-model="pageNum" 
+          name="Announcement" 
+          class="block w-full h-full overflow-hidden rounded-[5px] appearance-none text-[#737791] px-[10px] text-[14px]"
+          @change="changePage(pageNum,list.data)"
+        >
+            <option v-for="i in pages" :value="i" :key="`page${i}`">{{ i }}</option> 
           </select>
           <i class="absolute transform -translate-y-1/2 top-1/2 flex-shrink-0 right-[5px] ml-[5px]">
             <svgIco name="arrow" class="w-[10px] h-[5px]"/>
           </i>
         </div>
-        <button type="button" class="rotate-[270deg]">
+        <button type="button" class="rotate-[270deg] disabled:opacity-20" @click="changePage(pageNum++, list.data)" :disabled="pageNum === pages">
           <i class="block">
             <svgIco name="arrow" class="w-[10px] h-[5px]"/>
           </i>
@@ -55,7 +96,7 @@
   </header>
   <div class="bg-[#fff] p:border-solid p:border-[1px] p:border-[#d5d5da] ">
     <ul>
-      <li v-for="i in 10" :key="`list_${i}`" class="border-solid border-[#d5d5da] border-b-[1px] last:border-none p:px-[15px] p:py-[18px] tm:px-[8px]">
+      <li v-for="item,i in changePage(pageNum,list.data)" :key="`list_${i}`" class="border-solid border-[#d5d5da] border-b-[1px] last:border-none p:px-[15px] p:py-[18px] tm:px-[8px]">
         <div class="relative p:pl-[50px] tm:space-y-[10px] tm:pt-[26px] tm:pb-[10px]">
           <div class="tm:flex items-center">
             <button type="button" class="p:absolute p:left-[15px] p:top-[3px]">
@@ -66,7 +107,7 @@
             <p class="bg-[#ededed] text-[#11263C] top-0 right-0 rounded-[38px] py-[2px] px-[8px] text-[12px] p:absolute tm:ml-[17px]">News</p>
           </div>
           <div class="p:flex p:flex-wrap tm:space-y-[10px]">
-            <p class="w-full font-[500] text-[14px] leading-[24px] p:mb-[10px] p:pr-[100px]"> {{ i }} APPX System New Version Release Announce on APPX System New Version Release Announce onAPPX System New Version Release Announce onAPPX System New Version Release Announce onAPPX System New Version Release Announce onAPPX System New Version Release Announce on  14th Dec...</p>
+            <p class="w-full font-[500] text-[14px] leading-[24px] p:mb-[10px] p:pr-[100px]">{{ item.number+1 }} {{ item.text }}</p>
             <div class="flex items-center space-x-[25px]">
               <button type="button" class="flex items-center">
                 <i>

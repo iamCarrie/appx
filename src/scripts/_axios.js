@@ -66,3 +66,6 @@ const trycatchApi = async (apiRequestMethod, apiPath, data) => {
 export const getNav = (data) =>
   trycatchApi("get", "/data.json", assignData(data));
 
+export const getList = (data) =>
+  trycatchApi("get", "/list.json", assignData(data));
+

@@ -6,10 +6,6 @@ import Nav from '@components/nav.vue'
 
 
 const isNavActive = ref(false)
-const toggleActive = (data) => {
-  data = !data
-  console.log(data)
-}
 const menu = reactive({
   data:''
 })
@@ -22,11 +18,7 @@ async function getApi(){
   const getNavApi = await getNav()
   if(getNavApi.status === 200){
     menu.data = getNavApi.data
-
-    console.log(getNavApi)
-    console.log(typeof getNavApi.data)
   }
-
 }
 
 
@@ -120,9 +112,9 @@ async function getApi(){
     <main class="flex overflow-hidden relative p:pr-[26px]">
       <Nav :data="menu.data" :isNavActive="isNavActive" class="tm:z-10 tm:bg-[#f2f2f7] tm:h-full tm:fixed tm:top-[68px] tm:left-0"/>
       <div class="flex-grow p:pt-[20px] tm:px-[15px] tm:py-[20px]">
-        <ul class="flex font-[500] text-[14px] mb-[25px] px-[8px]">
+        <ul class="flex items-center font-[500] text-[14px] mb-[25px] px-[8px]">
           <li>
-            <p class="text-[#737791] after:content-['>'] after:mx-[15px]">Home</p>
+            <p class="text-[#737791] after:content-['>'] after:mx-[15px] m:text-[12px]">Home</p>
           </li>
           <li>
             <a href="#" class="font-bold text-[#121212]">My Collection</a>
